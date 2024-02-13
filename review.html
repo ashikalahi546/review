@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex flex-col items-center my-20">
+      <h1 class="text-3xl">Goriber Evaly Rebooted 2.0</h1>
+      <textarea
+        id="submit-textarea"
+        class="outline-none border rounded-md p-5 my-3.5"
+        name=""
+        placeholder="review"
+        id=""
+        cols="30"
+      ></textarea>
+      <button
+        id="submit-btn"
+        class="bg-red-500 text-white p-2 text-xs rounded-lg"
+      >
+        Submit
+      </button>
+    </div>
+    <div id="review" class="text-center">
+      <h2 class="text-4xl text-orange-500">user Review</h2>
+    </div>
+
+    <script>
+      let serial = 1;
+      document
+        .getElementById("submit-btn")
+        .addEventListener("click", function () {
+          // const inputElement = document.querySelector('textarea');
+          // const inputValue = inputElement.value;
+          // console.log(inputValue)
+          const inputValue = document.querySelector("textarea").value;
+          console.log(inputValue);
+          const container = document.getElementById("review");
+          const p = document.createElement("p");
+          p.innerText = serial + "." + inputValue;
+          container.appendChild(p);
+          serial++;
+          document.querySelector("textarea").value = "";
+        });
+
+      document
+        .getElementById("submit-textarea")
+        .addEventListener("keyup", function (event) {
+          if (event.key === "Enter") {
+            const inputValue = document.querySelector("textarea").value;
+            console.log(inputValue);
+            const container = document.getElementById("review");
+            const p = document.createElement("p");
+            p.innerText = serial + "." + inputValue;
+            container.appendChild(p);
+            serial++;
+            document.querySelector("textarea").value = "";
+          }
+        });
+    </script>
+  </body>
+</html>
